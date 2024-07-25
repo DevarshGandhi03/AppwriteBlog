@@ -18,7 +18,7 @@ function Signup() {
     const signUp = async(data) => {
         setError("")
         try {
-            const userData = await authService.createAccount(data).then((data)=>console.log(data));
+            const userData = await authService.createAccount(data)
             if (userData) {
                 const userData = await authService.getUser()
                 if(userData) dispatch(login(userData));

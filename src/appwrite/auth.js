@@ -19,8 +19,7 @@ class AuthService {
       console.log(user);
       if (user) {
         // We will login user here
-        console.log("entry");
-        return this.loginUser(email, password);
+        return this.loginUser({email, password});
       } else {
         return user;
       }

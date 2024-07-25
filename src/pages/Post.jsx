@@ -10,10 +10,22 @@ export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
+    const[isAuthor,setIsAuthor]=useState()
 
     const userData = useSelector((state) => state.authSliceReducer.userData);
 
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
+    useEffect(()=>{
+        if ((post&&userData)) {
+            if (post.userId === userData.$id) {
+                setIsAuthor(true)
+            }else{
+                setIsAuthor(false)
+            }
+        }else{
+            setIsAuthor(false)
+        }
+    },)
+    
 
     useEffect(() => {
         if (slug) {
